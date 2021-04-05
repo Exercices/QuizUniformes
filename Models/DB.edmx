@@ -1,0 +1,1227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RhUniformesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Id_Almacen" />
+          </Key>
+          <Property Name="Id_Almacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Articulo" Type="int" Nullable="false" />
+          <Property Name="Id_TipoTalla" Type="int" Nullable="false" />
+          <Property Name="Id_Talla" Type="int" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="Existencias" Type="int" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_Articulos">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Articulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Id_Estatus" Type="int" Nullable="false" />
+          <Property Name="Id_TipoArticulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_Empleados">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Empleado" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Id_Grupo" Type="nchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_Estatus">
+          <Key>
+            <PropertyRef Name="Id_Estatus" />
+          </Key>
+          <Property Name="Id_Estatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_Grupos">
+          <Key>
+            <PropertyRef Name="Id_Grupo" />
+          </Key>
+          <Property Name="Id_Grupo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Grupo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_TipoEmpleado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_Tallas">
+          <Key>
+            <PropertyRef Name="Id_Talla" />
+          </Key>
+          <Property Name="Id_Talla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Talla" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Id_Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_TipoEmpleados">
+          <Key>
+            <PropertyRef Name="Id_TipoEmpleado" />
+          </Key>
+          <Property Name="Id_TipoEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_TiposArticulos">
+          <Key>
+            <PropertyRef Name="Id_TipoArticulo" />
+          </Key>
+          <Property Name="Id_TipoArticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_TiposEntradas">
+          <Key>
+            <PropertyRef Name="Id_TipoEntrada" />
+          </Key>
+          <Property Name="Id_TipoEntrada" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cat_TiposTallas">
+          <Key>
+            <PropertyRef Name="Id_TipoTalla" />
+          </Key>
+          <Property Name="Id_TipoTalla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Id_Estatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EntradaAlmacen">
+          <Key>
+            <PropertyRef Name="Id_EntradaAlmacen" />
+          </Key>
+          <Property Name="Id_EntradaAlmacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaEntrada" Type="date" Nullable="false" />
+          <Property Name="Id_TipoEntrada" Type="int" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Id_OrdenCompra" Type="int" />
+          <Property Name="Id_Reconteo" Type="int" />
+          <Property Name="Id_Almacen" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="SalidaAlmacen">
+          <Key>
+            <PropertyRef Name="Id_SalidaAlmacen" />
+          </Key>
+          <Property Name="Id_SalidaAlmacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaSalida" Type="date" Nullable="false" />
+          <Property Name="Id_Almacen" Type="int" Nullable="false" />
+          <Property Name="Id_Empleado" Type="int" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RhUniformes.dbo.vw_EntradasAlmacen' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_EntradasAlmacen">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="FechaEntrada" />
+            <PropertyRef Name="Cantidad" />
+          </Key>
+          <Property Name="Folio" Type="int" Nullable="false" />
+          <Property Name="FechaEntrada" Type="date" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Articulo" Type="varchar" MaxLength="50" />
+          <Property Name="Talla" Type="varchar" MaxLength="113" />
+          <Property Name="TipoEntrada" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RhUniformes.dbo.vw_ExistenciasAlmacen' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ExistenciasAlmacen">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="Existencias" />
+          </Key>
+          <Property Name="Folio" Type="int" Nullable="false" />
+          <Property Name="Existencias" Type="int" Nullable="false" />
+          <Property Name="Articulo" Type="varchar" MaxLength="50" />
+          <Property Name="Talla" Type="varchar" MaxLength="113" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RhUniformes.dbo.vw_ListadoArticulos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_ListadoArticulos">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="Articulo" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Folio" Type="int" Nullable="false" />
+          <Property Name="Articulo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'RhUniformes.dbo.vw_SalidasAlmacen' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_SalidasAlmacen">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="FechaSalida" />
+            <PropertyRef Name="Cantidad" />
+          </Key>
+          <Property Name="Folio" Type="int" Nullable="false" />
+          <Property Name="FechaSalida" Type="date" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Articulo" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Talla" Type="varchar" MaxLength="113" />
+          <Property Name="Nombre_Empleado" Type="varchar" MaxLength="100" />
+          <Property Name="Tipo" Type="varchar" MaxLength="103" />
+        </EntityType>
+        <Association Name="FK_Almacen_Cat_Articulos">
+          <End Role="Cat_Articulos" Type="Self.Cat_Articulos" Multiplicity="1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_Cat_Tallas">
+          <End Role="Cat_Tallas" Type="Self.Cat_Tallas" Multiplicity="1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Tallas">
+              <PropertyRef Name="Id_Talla" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="Id_Talla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_Cat_TiposTallas">
+          <End Role="Cat_TiposTallas" Type="Self.Cat_TiposTallas" Multiplicity="1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TiposTallas">
+              <PropertyRef Name="Id_TipoTalla" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="Id_TipoTalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Articulos_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_Articulos" Type="Self.Cat_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_Articulos">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Articulos_Cat_TiposArticulos">
+          <End Role="Cat_TiposArticulos" Type="Self.Cat_TiposArticulos" Multiplicity="1" />
+          <End Role="Cat_Articulos" Type="Self.Cat_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TiposArticulos">
+              <PropertyRef Name="Id_TipoArticulo" />
+            </Principal>
+            <Dependent Role="Cat_Articulos">
+              <PropertyRef Name="Id_TipoArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Empleados_Cat_Grupos1">
+          <End Role="Cat_Grupos" Type="Self.Cat_Grupos" Multiplicity="1" />
+          <End Role="Cat_Empleados" Type="Self.Cat_Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Grupos">
+              <PropertyRef Name="Id_Grupo" />
+            </Principal>
+            <Dependent Role="Cat_Empleados">
+              <PropertyRef Name="Id_Grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Grupos_Cat_TipoEmpleados1">
+          <End Role="Cat_TipoEmpleados" Type="Self.Cat_TipoEmpleados" Multiplicity="1" />
+          <End Role="Cat_Grupos" Type="Self.Cat_Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TipoEmpleados">
+              <PropertyRef Name="Id_TipoEmpleado" />
+            </Principal>
+            <Dependent Role="Cat_Grupos">
+              <PropertyRef Name="Id_TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Tallas_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_Tallas" Type="Self.Cat_Tallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_Tallas">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_TiposArticulos_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_TiposArticulos" Type="Self.Cat_TiposArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_TiposArticulos">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_TiposEntradas_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_TiposEntradas" Type="Self.Cat_TiposEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_TiposEntradas">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_TiposTallas_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_TiposTallas" Type="Self.Cat_TiposTallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_TiposTallas">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaAlmacen_Almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
+          <End Role="EntradaAlmacen" Type="Self.EntradaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Principal>
+            <Dependent Role="EntradaAlmacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaAlmacen_Cat_Empleados">
+          <End Role="Cat_Empleados" Type="Self.Cat_Empleados" Multiplicity="0..1" />
+          <End Role="EntradaAlmacen" Type="Self.EntradaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="EntradaAlmacen">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaAlmacen_Cat_TiposEntradas">
+          <End Role="Cat_TiposEntradas" Type="Self.Cat_TiposEntradas" Multiplicity="1" />
+          <End Role="EntradaAlmacen" Type="Self.EntradaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TiposEntradas">
+              <PropertyRef Name="Id_TipoEntrada" />
+            </Principal>
+            <Dependent Role="EntradaAlmacen">
+              <PropertyRef Name="Id_TipoEntrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalidaAlmacen_Almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
+          <End Role="SalidaAlmacen" Type="Self.SalidaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Principal>
+            <Dependent Role="SalidaAlmacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalidaAlmacen_Cat_Empleados1">
+          <End Role="Cat_Empleados" Type="Self.Cat_Empleados" Multiplicity="0..1" />
+          <End Role="SalidaAlmacen" Type="Self.SalidaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="SalidaAlmacen">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_EntradaAlmacen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAlmacen" Type="int" Mode="In" />
+          <Parameter Name="IdArticulo" Type="int" Mode="In" />
+          <Parameter Name="IdTipoTalla" Type="int" Mode="In" />
+          <Parameter Name="IdTalla" Type="int" Mode="In" />
+          <Parameter Name="IdTipoEntrada" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+          <Parameter Name="IdOrdenCompra" Type="int" Mode="In" />
+          <Parameter Name="IdReconteo" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_SalidaAlmacen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAlmacen" Type="int" Mode="In" />
+          <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="RhUniformesModelStoreContainer">
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_Articulos" EntityType="Self.Cat_Articulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_Empleados" EntityType="Self.Cat_Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_Estatus" EntityType="Self.Cat_Estatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_Grupos" EntityType="Self.Cat_Grupos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_Tallas" EntityType="Self.Cat_Tallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_TipoEmpleados" EntityType="Self.Cat_TipoEmpleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_TiposArticulos" EntityType="Self.Cat_TiposArticulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_TiposEntradas" EntityType="Self.Cat_TiposEntradas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cat_TiposTallas" EntityType="Self.Cat_TiposTallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntradaAlmacen" EntityType="Self.EntradaAlmacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalidaAlmacen" EntityType="Self.SalidaAlmacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_EntradasAlmacen" EntityType="Self.vw_EntradasAlmacen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_EntradasAlmacen].[Folio] AS [Folio], 
+    [vw_EntradasAlmacen].[FechaEntrada] AS [FechaEntrada], 
+    [vw_EntradasAlmacen].[Cantidad] AS [Cantidad], 
+    [vw_EntradasAlmacen].[Articulo] AS [Articulo], 
+    [vw_EntradasAlmacen].[Talla] AS [Talla], 
+    [vw_EntradasAlmacen].[TipoEntrada] AS [TipoEntrada], 
+    [vw_EntradasAlmacen].[Descripcion] AS [Descripcion]
+    FROM [dbo].[vw_EntradasAlmacen] AS [vw_EntradasAlmacen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ExistenciasAlmacen" EntityType="Self.vw_ExistenciasAlmacen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ExistenciasAlmacen].[Folio] AS [Folio], 
+    [vw_ExistenciasAlmacen].[Existencias] AS [Existencias], 
+    [vw_ExistenciasAlmacen].[Articulo] AS [Articulo], 
+    [vw_ExistenciasAlmacen].[Talla] AS [Talla], 
+    [vw_ExistenciasAlmacen].[Tipo] AS [Tipo]
+    FROM [dbo].[vw_ExistenciasAlmacen] AS [vw_ExistenciasAlmacen]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_ListadoArticulos" EntityType="Self.vw_ListadoArticulos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_ListadoArticulos].[Folio] AS [Folio], 
+    [vw_ListadoArticulos].[Articulo] AS [Articulo], 
+    [vw_ListadoArticulos].[Descripcion] AS [Descripcion], 
+    [vw_ListadoArticulos].[Tipo] AS [Tipo]
+    FROM [dbo].[vw_ListadoArticulos] AS [vw_ListadoArticulos]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_SalidasAlmacen" EntityType="Self.vw_SalidasAlmacen" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_SalidasAlmacen].[Folio] AS [Folio], 
+    [vw_SalidasAlmacen].[FechaSalida] AS [FechaSalida], 
+    [vw_SalidasAlmacen].[Cantidad] AS [Cantidad], 
+    [vw_SalidasAlmacen].[Articulo] AS [Articulo], 
+    [vw_SalidasAlmacen].[Descripcion] AS [Descripcion], 
+    [vw_SalidasAlmacen].[Talla] AS [Talla], 
+    [vw_SalidasAlmacen].[Nombre_Empleado] AS [Nombre_Empleado], 
+    [vw_SalidasAlmacen].[Tipo] AS [Tipo]
+    FROM [dbo].[vw_SalidasAlmacen] AS [vw_SalidasAlmacen]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Almacen_Cat_Articulos" Association="Self.FK_Almacen_Cat_Articulos">
+            <End Role="Cat_Articulos" EntitySet="Cat_Articulos" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_Cat_Tallas" Association="Self.FK_Almacen_Cat_Tallas">
+            <End Role="Cat_Tallas" EntitySet="Cat_Tallas" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_Cat_TiposTallas" Association="Self.FK_Almacen_Cat_TiposTallas">
+            <End Role="Cat_TiposTallas" EntitySet="Cat_TiposTallas" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Articulos_Cat_Estatus" Association="Self.FK_Cat_Articulos_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_Articulos" EntitySet="Cat_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Articulos_Cat_TiposArticulos" Association="Self.FK_Cat_Articulos_Cat_TiposArticulos">
+            <End Role="Cat_TiposArticulos" EntitySet="Cat_TiposArticulos" />
+            <End Role="Cat_Articulos" EntitySet="Cat_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Empleados_Cat_Grupos1" Association="Self.FK_Cat_Empleados_Cat_Grupos1">
+            <End Role="Cat_Grupos" EntitySet="Cat_Grupos" />
+            <End Role="Cat_Empleados" EntitySet="Cat_Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Grupos_Cat_TipoEmpleados1" Association="Self.FK_Cat_Grupos_Cat_TipoEmpleados1">
+            <End Role="Cat_TipoEmpleados" EntitySet="Cat_TipoEmpleados" />
+            <End Role="Cat_Grupos" EntitySet="Cat_Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Tallas_Cat_Estatus" Association="Self.FK_Cat_Tallas_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_Tallas" EntitySet="Cat_Tallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_TiposArticulos_Cat_Estatus" Association="Self.FK_Cat_TiposArticulos_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_TiposArticulos" EntitySet="Cat_TiposArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_TiposEntradas_Cat_Estatus" Association="Self.FK_Cat_TiposEntradas_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_TiposEntradas" EntitySet="Cat_TiposEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_TiposTallas_Cat_Estatus" Association="Self.FK_Cat_TiposTallas_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_TiposTallas" EntitySet="Cat_TiposTallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaAlmacen_Almacen" Association="Self.FK_EntradaAlmacen_Almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="EntradaAlmacen" EntitySet="EntradaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaAlmacen_Cat_Empleados" Association="Self.FK_EntradaAlmacen_Cat_Empleados">
+            <End Role="Cat_Empleados" EntitySet="Cat_Empleados" />
+            <End Role="EntradaAlmacen" EntitySet="EntradaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaAlmacen_Cat_TiposEntradas" Association="Self.FK_EntradaAlmacen_Cat_TiposEntradas">
+            <End Role="Cat_TiposEntradas" EntitySet="Cat_TiposEntradas" />
+            <End Role="EntradaAlmacen" EntitySet="EntradaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalidaAlmacen_Almacen" Association="Self.FK_SalidaAlmacen_Almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="SalidaAlmacen" EntitySet="SalidaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalidaAlmacen_Cat_Empleados1" Association="Self.FK_SalidaAlmacen_Cat_Empleados1">
+            <End Role="Cat_Empleados" EntitySet="Cat_Empleados" />
+            <End Role="SalidaAlmacen" EntitySet="SalidaAlmacen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RhUniformesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Almacen">
+          <Key>
+            <PropertyRef Name="Id_Almacen" />
+          </Key>
+          <Property Name="Id_Almacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_Articulo" Type="Int32" Nullable="false" />
+          <Property Name="Id_TipoTalla" Type="Int32" Nullable="false" />
+          <Property Name="Id_Talla" Type="Int32" Nullable="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Existencias" Type="Int32" Nullable="false" />
+          <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Cat_Articulos" Relationship="Self.FK_Almacen_Cat_Articulos" FromRole="Almacen" ToRole="Cat_Articulos" />
+          <NavigationProperty Name="Cat_Tallas" Relationship="Self.FK_Almacen_Cat_Tallas" FromRole="Almacen" ToRole="Cat_Tallas" />
+          <NavigationProperty Name="Cat_TiposTallas" Relationship="Self.FK_Almacen_Cat_TiposTallas" FromRole="Almacen" ToRole="Cat_TiposTallas" />
+          <NavigationProperty Name="EntradaAlmacen" Relationship="Self.FK_EntradaAlmacen_Almacen" FromRole="Almacen" ToRole="EntradaAlmacen" />
+          <NavigationProperty Name="SalidaAlmacen" Relationship="Self.FK_SalidaAlmacen_Almacen" FromRole="Almacen" ToRole="SalidaAlmacen" />
+        </EntityType>
+        <EntityType Name="Cat_Articulos">
+          <Key>
+            <PropertyRef Name="Id_Articulo" />
+          </Key>
+          <Property Name="Id_Articulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+          <Property Name="Id_TipoArticulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_Almacen_Cat_Articulos" FromRole="Cat_Articulos" ToRole="Almacen" />
+          <NavigationProperty Name="Cat_Estatus" Relationship="Self.FK_Cat_Articulos_Cat_Estatus" FromRole="Cat_Articulos" ToRole="Cat_Estatus" />
+          <NavigationProperty Name="Cat_TiposArticulos" Relationship="Self.FK_Cat_Articulos_Cat_TiposArticulos" FromRole="Cat_Articulos" ToRole="Cat_TiposArticulos" />
+        </EntityType>
+        <EntityType Name="Cat_Empleados">
+          <Key>
+            <PropertyRef Name="Id_Empleado" />
+          </Key>
+          <Property Name="Id_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Grupo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cat_Grupos" Relationship="Self.FK_Cat_Empleados_Cat_Grupos1" FromRole="Cat_Empleados" ToRole="Cat_Grupos" />
+          <NavigationProperty Name="EntradaAlmacen" Relationship="Self.FK_EntradaAlmacen_Cat_Empleados" FromRole="Cat_Empleados" ToRole="EntradaAlmacen" />
+          <NavigationProperty Name="SalidaAlmacen" Relationship="Self.FK_SalidaAlmacen_Cat_Empleados1" FromRole="Cat_Empleados" ToRole="SalidaAlmacen" />
+        </EntityType>
+        <EntityType Name="Cat_Estatus">
+          <Key>
+            <PropertyRef Name="Id_Estatus" />
+          </Key>
+          <Property Name="Id_Estatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cat_Articulos" Relationship="Self.FK_Cat_Articulos_Cat_Estatus" FromRole="Cat_Estatus" ToRole="Cat_Articulos" />
+          <NavigationProperty Name="Cat_Tallas" Relationship="Self.FK_Cat_Tallas_Cat_Estatus" FromRole="Cat_Estatus" ToRole="Cat_Tallas" />
+          <NavigationProperty Name="Cat_TiposArticulos" Relationship="Self.FK_Cat_TiposArticulos_Cat_Estatus" FromRole="Cat_Estatus" ToRole="Cat_TiposArticulos" />
+          <NavigationProperty Name="Cat_TiposEntradas" Relationship="Self.FK_Cat_TiposEntradas_Cat_Estatus" FromRole="Cat_Estatus" ToRole="Cat_TiposEntradas" />
+          <NavigationProperty Name="Cat_TiposTallas" Relationship="Self.FK_Cat_TiposTallas_Cat_Estatus" FromRole="Cat_Estatus" ToRole="Cat_TiposTallas" />
+        </EntityType>
+        <EntityType Name="Cat_Grupos">
+          <Key>
+            <PropertyRef Name="Id_Grupo" />
+          </Key>
+          <Property Name="Id_Grupo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Grupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_TipoEmpleado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cat_Empleados" Relationship="Self.FK_Cat_Empleados_Cat_Grupos1" FromRole="Cat_Grupos" ToRole="Cat_Empleados" />
+          <NavigationProperty Name="Cat_TipoEmpleados" Relationship="Self.FK_Cat_Grupos_Cat_TipoEmpleados1" FromRole="Cat_Grupos" ToRole="Cat_TipoEmpleados" />
+        </EntityType>
+        <EntityType Name="Cat_Tallas">
+          <Key>
+            <PropertyRef Name="Id_Talla" />
+          </Key>
+          <Property Name="Id_Talla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Talla" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_Almacen_Cat_Tallas" FromRole="Cat_Tallas" ToRole="Almacen" />
+          <NavigationProperty Name="Cat_Estatus" Relationship="Self.FK_Cat_Tallas_Cat_Estatus" FromRole="Cat_Tallas" ToRole="Cat_Estatus" />
+        </EntityType>
+        <EntityType Name="Cat_TipoEmpleados">
+          <Key>
+            <PropertyRef Name="Id_TipoEmpleado" />
+          </Key>
+          <Property Name="Id_TipoEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cat_Grupos" Relationship="Self.FK_Cat_Grupos_Cat_TipoEmpleados1" FromRole="Cat_TipoEmpleados" ToRole="Cat_Grupos" />
+        </EntityType>
+        <EntityType Name="Cat_TiposArticulos">
+          <Key>
+            <PropertyRef Name="Id_TipoArticulo" />
+          </Key>
+          <Property Name="Id_TipoArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cat_Articulos" Relationship="Self.FK_Cat_Articulos_Cat_TiposArticulos" FromRole="Cat_TiposArticulos" ToRole="Cat_Articulos" />
+          <NavigationProperty Name="Cat_Estatus" Relationship="Self.FK_Cat_TiposArticulos_Cat_Estatus" FromRole="Cat_TiposArticulos" ToRole="Cat_Estatus" />
+        </EntityType>
+        <EntityType Name="Cat_TiposEntradas">
+          <Key>
+            <PropertyRef Name="Id_TipoEntrada" />
+          </Key>
+          <Property Name="Id_TipoEntrada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cat_Estatus" Relationship="Self.FK_Cat_TiposEntradas_Cat_Estatus" FromRole="Cat_TiposEntradas" ToRole="Cat_Estatus" />
+          <NavigationProperty Name="EntradaAlmacen" Relationship="Self.FK_EntradaAlmacen_Cat_TiposEntradas" FromRole="Cat_TiposEntradas" ToRole="EntradaAlmacen" />
+        </EntityType>
+        <EntityType Name="Cat_TiposTallas">
+          <Key>
+            <PropertyRef Name="Id_TipoTalla" />
+          </Key>
+          <Property Name="Id_TipoTalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Estatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_Almacen_Cat_TiposTallas" FromRole="Cat_TiposTallas" ToRole="Almacen" />
+          <NavigationProperty Name="Cat_Estatus" Relationship="Self.FK_Cat_TiposTallas_Cat_Estatus" FromRole="Cat_TiposTallas" ToRole="Cat_Estatus" />
+        </EntityType>
+        <EntityType Name="EntradaAlmacen">
+          <Key>
+            <PropertyRef Name="Id_EntradaAlmacen" />
+          </Key>
+          <Property Name="Id_EntradaAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaEntrada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_TipoEntrada" Type="Int32" Nullable="false" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Id_OrdenCompra" Type="Int32" />
+          <Property Name="Id_Reconteo" Type="Int32" />
+          <Property Name="Id_Almacen" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_EntradaAlmacen_Almacen" FromRole="EntradaAlmacen" ToRole="Almacen" />
+          <NavigationProperty Name="Cat_Empleados" Relationship="Self.FK_EntradaAlmacen_Cat_Empleados" FromRole="EntradaAlmacen" ToRole="Cat_Empleados" />
+          <NavigationProperty Name="Cat_TiposEntradas" Relationship="Self.FK_EntradaAlmacen_Cat_TiposEntradas" FromRole="EntradaAlmacen" ToRole="Cat_TiposEntradas" />
+        </EntityType>
+        <EntityType Name="SalidaAlmacen">
+          <Key>
+            <PropertyRef Name="Id_SalidaAlmacen" />
+          </Key>
+          <Property Name="Id_SalidaAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaSalida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Id_Almacen" Type="Int32" Nullable="false" />
+          <Property Name="Id_Empleado" Type="Int32" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Almacen" Relationship="Self.FK_SalidaAlmacen_Almacen" FromRole="SalidaAlmacen" ToRole="Almacen" />
+          <NavigationProperty Name="Cat_Empleados" Relationship="Self.FK_SalidaAlmacen_Cat_Empleados1" FromRole="SalidaAlmacen" ToRole="Cat_Empleados" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="vw_EntradasAlmacen">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="FechaEntrada" />
+            <PropertyRef Name="Cantidad" />
+          </Key>
+          <Property Name="Folio" Type="Int32" Nullable="false" />
+          <Property Name="FechaEntrada" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Talla" Type="String" MaxLength="113" FixedLength="false" Unicode="false" />
+          <Property Name="TipoEntrada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_ExistenciasAlmacen">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="Existencias" />
+          </Key>
+          <Property Name="Folio" Type="Int32" Nullable="false" />
+          <Property Name="Existencias" Type="Int32" Nullable="false" />
+          <Property Name="Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Talla" Type="String" MaxLength="113" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vw_ListadoArticulos">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="Articulo" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Folio" Type="Int32" Nullable="false" />
+          <Property Name="Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_SalidasAlmacen">
+          <Key>
+            <PropertyRef Name="Folio" />
+            <PropertyRef Name="FechaSalida" />
+            <PropertyRef Name="Cantidad" />
+          </Key>
+          <Property Name="Folio" Type="Int32" Nullable="false" />
+          <Property Name="FechaSalida" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Articulo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Talla" Type="String" MaxLength="113" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Empleado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="103" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Almacen_Cat_Articulos">
+          <End Role="Cat_Articulos" Type="Self.Cat_Articulos" Multiplicity="1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Articulos">
+              <PropertyRef Name="Id_Articulo" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="Id_Articulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_Cat_Tallas">
+          <End Role="Cat_Tallas" Type="Self.Cat_Tallas" Multiplicity="1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Tallas">
+              <PropertyRef Name="Id_Talla" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="Id_Talla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Almacen_Cat_TiposTallas">
+          <End Role="Cat_TiposTallas" Type="Self.Cat_TiposTallas" Multiplicity="1" />
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TiposTallas">
+              <PropertyRef Name="Id_TipoTalla" />
+            </Principal>
+            <Dependent Role="Almacen">
+              <PropertyRef Name="Id_TipoTalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaAlmacen_Almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
+          <End Role="EntradaAlmacen" Type="Self.EntradaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Principal>
+            <Dependent Role="EntradaAlmacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalidaAlmacen_Almacen">
+          <End Role="Almacen" Type="Self.Almacen" Multiplicity="1" />
+          <End Role="SalidaAlmacen" Type="Self.SalidaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Almacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Principal>
+            <Dependent Role="SalidaAlmacen">
+              <PropertyRef Name="Id_Almacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Articulos_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_Articulos" Type="Self.Cat_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_Articulos">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Articulos_Cat_TiposArticulos">
+          <End Role="Cat_TiposArticulos" Type="Self.Cat_TiposArticulos" Multiplicity="1" />
+          <End Role="Cat_Articulos" Type="Self.Cat_Articulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TiposArticulos">
+              <PropertyRef Name="Id_TipoArticulo" />
+            </Principal>
+            <Dependent Role="Cat_Articulos">
+              <PropertyRef Name="Id_TipoArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Empleados_Cat_Grupos1">
+          <End Role="Cat_Grupos" Type="Self.Cat_Grupos" Multiplicity="1" />
+          <End Role="Cat_Empleados" Type="Self.Cat_Empleados" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Grupos">
+              <PropertyRef Name="Id_Grupo" />
+            </Principal>
+            <Dependent Role="Cat_Empleados">
+              <PropertyRef Name="Id_Grupo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaAlmacen_Cat_Empleados">
+          <End Role="Cat_Empleados" Type="Self.Cat_Empleados" Multiplicity="0..1" />
+          <End Role="EntradaAlmacen" Type="Self.EntradaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="EntradaAlmacen">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalidaAlmacen_Cat_Empleados1">
+          <End Role="Cat_Empleados" Type="Self.Cat_Empleados" Multiplicity="0..1" />
+          <End Role="SalidaAlmacen" Type="Self.SalidaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Empleados">
+              <PropertyRef Name="Id_Empleado" />
+            </Principal>
+            <Dependent Role="SalidaAlmacen">
+              <PropertyRef Name="Id_Empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Tallas_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_Tallas" Type="Self.Cat_Tallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_Tallas">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_TiposArticulos_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_TiposArticulos" Type="Self.Cat_TiposArticulos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_TiposArticulos">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_TiposEntradas_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_TiposEntradas" Type="Self.Cat_TiposEntradas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_TiposEntradas">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_TiposTallas_Cat_Estatus">
+          <End Role="Cat_Estatus" Type="Self.Cat_Estatus" Multiplicity="1" />
+          <End Role="Cat_TiposTallas" Type="Self.Cat_TiposTallas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_Estatus">
+              <PropertyRef Name="Id_Estatus" />
+            </Principal>
+            <Dependent Role="Cat_TiposTallas">
+              <PropertyRef Name="Id_Estatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cat_Grupos_Cat_TipoEmpleados1">
+          <End Role="Cat_TipoEmpleados" Type="Self.Cat_TipoEmpleados" Multiplicity="1" />
+          <End Role="Cat_Grupos" Type="Self.Cat_Grupos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TipoEmpleados">
+              <PropertyRef Name="Id_TipoEmpleado" />
+            </Principal>
+            <Dependent Role="Cat_Grupos">
+              <PropertyRef Name="Id_TipoEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EntradaAlmacen_Cat_TiposEntradas">
+          <End Role="Cat_TiposEntradas" Type="Self.Cat_TiposEntradas" Multiplicity="1" />
+          <End Role="EntradaAlmacen" Type="Self.EntradaAlmacen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cat_TiposEntradas">
+              <PropertyRef Name="Id_TipoEntrada" />
+            </Principal>
+            <Dependent Role="EntradaAlmacen">
+              <PropertyRef Name="Id_TipoEntrada" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RhUniformesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Almacen" EntityType="Self.Almacen" />
+          <EntitySet Name="Cat_Articulos" EntityType="Self.Cat_Articulos" />
+          <EntitySet Name="Cat_Empleados" EntityType="Self.Cat_Empleados" />
+          <EntitySet Name="Cat_Estatus" EntityType="Self.Cat_Estatus" />
+          <EntitySet Name="Cat_Grupos" EntityType="Self.Cat_Grupos" />
+          <EntitySet Name="Cat_Tallas" EntityType="Self.Cat_Tallas" />
+          <EntitySet Name="Cat_TipoEmpleados" EntityType="Self.Cat_TipoEmpleados" />
+          <EntitySet Name="Cat_TiposArticulos" EntityType="Self.Cat_TiposArticulos" />
+          <EntitySet Name="Cat_TiposEntradas" EntityType="Self.Cat_TiposEntradas" />
+          <EntitySet Name="Cat_TiposTallas" EntityType="Self.Cat_TiposTallas" />
+          <EntitySet Name="EntradaAlmacen" EntityType="Self.EntradaAlmacen" />
+          <EntitySet Name="SalidaAlmacen" EntityType="Self.SalidaAlmacen" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="vw_EntradasAlmacen" EntityType="Self.vw_EntradasAlmacen" />
+          <EntitySet Name="vw_ExistenciasAlmacen" EntityType="Self.vw_ExistenciasAlmacen" />
+          <EntitySet Name="vw_ListadoArticulos" EntityType="Self.vw_ListadoArticulos" />
+          <EntitySet Name="vw_SalidasAlmacen" EntityType="Self.vw_SalidasAlmacen" />
+          <AssociationSet Name="FK_Almacen_Cat_Articulos" Association="Self.FK_Almacen_Cat_Articulos">
+            <End Role="Cat_Articulos" EntitySet="Cat_Articulos" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_Cat_Tallas" Association="Self.FK_Almacen_Cat_Tallas">
+            <End Role="Cat_Tallas" EntitySet="Cat_Tallas" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Almacen_Cat_TiposTallas" Association="Self.FK_Almacen_Cat_TiposTallas">
+            <End Role="Cat_TiposTallas" EntitySet="Cat_TiposTallas" />
+            <End Role="Almacen" EntitySet="Almacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaAlmacen_Almacen" Association="Self.FK_EntradaAlmacen_Almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="EntradaAlmacen" EntitySet="EntradaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalidaAlmacen_Almacen" Association="Self.FK_SalidaAlmacen_Almacen">
+            <End Role="Almacen" EntitySet="Almacen" />
+            <End Role="SalidaAlmacen" EntitySet="SalidaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Articulos_Cat_Estatus" Association="Self.FK_Cat_Articulos_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_Articulos" EntitySet="Cat_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Articulos_Cat_TiposArticulos" Association="Self.FK_Cat_Articulos_Cat_TiposArticulos">
+            <End Role="Cat_TiposArticulos" EntitySet="Cat_TiposArticulos" />
+            <End Role="Cat_Articulos" EntitySet="Cat_Articulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Empleados_Cat_Grupos1" Association="Self.FK_Cat_Empleados_Cat_Grupos1">
+            <End Role="Cat_Grupos" EntitySet="Cat_Grupos" />
+            <End Role="Cat_Empleados" EntitySet="Cat_Empleados" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaAlmacen_Cat_Empleados" Association="Self.FK_EntradaAlmacen_Cat_Empleados">
+            <End Role="Cat_Empleados" EntitySet="Cat_Empleados" />
+            <End Role="EntradaAlmacen" EntitySet="EntradaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalidaAlmacen_Cat_Empleados1" Association="Self.FK_SalidaAlmacen_Cat_Empleados1">
+            <End Role="Cat_Empleados" EntitySet="Cat_Empleados" />
+            <End Role="SalidaAlmacen" EntitySet="SalidaAlmacen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Tallas_Cat_Estatus" Association="Self.FK_Cat_Tallas_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_Tallas" EntitySet="Cat_Tallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_TiposArticulos_Cat_Estatus" Association="Self.FK_Cat_TiposArticulos_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_TiposArticulos" EntitySet="Cat_TiposArticulos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_TiposEntradas_Cat_Estatus" Association="Self.FK_Cat_TiposEntradas_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_TiposEntradas" EntitySet="Cat_TiposEntradas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_TiposTallas_Cat_Estatus" Association="Self.FK_Cat_TiposTallas_Cat_Estatus">
+            <End Role="Cat_Estatus" EntitySet="Cat_Estatus" />
+            <End Role="Cat_TiposTallas" EntitySet="Cat_TiposTallas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cat_Grupos_Cat_TipoEmpleados1" Association="Self.FK_Cat_Grupos_Cat_TipoEmpleados1">
+            <End Role="Cat_TipoEmpleados" EntitySet="Cat_TipoEmpleados" />
+            <End Role="Cat_Grupos" EntitySet="Cat_Grupos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EntradaAlmacen_Cat_TiposEntradas" Association="Self.FK_EntradaAlmacen_Cat_TiposEntradas">
+            <End Role="Cat_TiposEntradas" EntitySet="Cat_TiposEntradas" />
+            <End Role="EntradaAlmacen" EntitySet="EntradaAlmacen" />
+          </AssociationSet>
+          <FunctionImport Name="sp_EntradaAlmacen" ReturnType="Collection(Int32)">
+            <Parameter Name="IdAlmacen" Mode="In" Type="Int32" />
+            <Parameter Name="IdArticulo" Mode="In" Type="Int32" />
+            <Parameter Name="IdTipoTalla" Mode="In" Type="Int32" />
+            <Parameter Name="IdTalla" Mode="In" Type="Int32" />
+            <Parameter Name="IdTipoEntrada" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="IdOrdenCompra" Mode="In" Type="Int32" />
+            <Parameter Name="IdReconteo" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SalidaAlmacen" ReturnType="Collection(String)">
+            <Parameter Name="IdAlmacen" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RhUniformesModelStoreContainer" CdmEntityContainer="RhUniformesEntities">
+          <EntitySetMapping Name="Almacen">
+            <EntityTypeMapping TypeName="RhUniformesModel.Almacen">
+              <MappingFragment StoreEntitySet="Almacen">
+                <ScalarProperty Name="Id_Almacen" ColumnName="Id_Almacen" />
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Id_TipoTalla" ColumnName="Id_TipoTalla" />
+                <ScalarProperty Name="Id_Talla" ColumnName="Id_Talla" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_Articulos">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_Articulos">
+              <MappingFragment StoreEntitySet="Cat_Articulos">
+                <ScalarProperty Name="Id_Articulo" ColumnName="Id_Articulo" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+                <ScalarProperty Name="Id_TipoArticulo" ColumnName="Id_TipoArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_Empleados">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_Empleados">
+              <MappingFragment StoreEntitySet="Cat_Empleados">
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Nombre_Empleado" ColumnName="Nombre_Empleado" />
+                <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_Estatus">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_Estatus">
+              <MappingFragment StoreEntitySet="Cat_Estatus">
+                <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_Grupos">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_Grupos">
+              <MappingFragment StoreEntitySet="Cat_Grupos">
+                <ScalarProperty Name="Id_Grupo" ColumnName="Id_Grupo" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Id_TipoEmpleado" ColumnName="Id_TipoEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_Tallas">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_Tallas">
+              <MappingFragment StoreEntitySet="Cat_Tallas">
+                <ScalarProperty Name="Id_Talla" ColumnName="Id_Talla" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_TipoEmpleados">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_TipoEmpleados">
+              <MappingFragment StoreEntitySet="Cat_TipoEmpleados">
+                <ScalarProperty Name="Id_TipoEmpleado" ColumnName="Id_TipoEmpleado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_TiposArticulos">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_TiposArticulos">
+              <MappingFragment StoreEntitySet="Cat_TiposArticulos">
+                <ScalarProperty Name="Id_TipoArticulo" ColumnName="Id_TipoArticulo" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_TiposEntradas">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_TiposEntradas">
+              <MappingFragment StoreEntitySet="Cat_TiposEntradas">
+                <ScalarProperty Name="Id_TipoEntrada" ColumnName="Id_TipoEntrada" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cat_TiposTallas">
+            <EntityTypeMapping TypeName="RhUniformesModel.Cat_TiposTallas">
+              <MappingFragment StoreEntitySet="Cat_TiposTallas">
+                <ScalarProperty Name="Id_TipoTalla" ColumnName="Id_TipoTalla" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Id_Estatus" ColumnName="Id_Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntradaAlmacen">
+            <EntityTypeMapping TypeName="RhUniformesModel.EntradaAlmacen">
+              <MappingFragment StoreEntitySet="EntradaAlmacen">
+                <ScalarProperty Name="Id_EntradaAlmacen" ColumnName="Id_EntradaAlmacen" />
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="Id_TipoEntrada" ColumnName="Id_TipoEntrada" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Id_OrdenCompra" ColumnName="Id_OrdenCompra" />
+                <ScalarProperty Name="Id_Reconteo" ColumnName="Id_Reconteo" />
+                <ScalarProperty Name="Id_Almacen" ColumnName="Id_Almacen" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalidaAlmacen">
+            <EntityTypeMapping TypeName="RhUniformesModel.SalidaAlmacen">
+              <MappingFragment StoreEntitySet="SalidaAlmacen">
+                <ScalarProperty Name="Id_SalidaAlmacen" ColumnName="Id_SalidaAlmacen" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="Id_Almacen" ColumnName="Id_Almacen" />
+                <ScalarProperty Name="Id_Empleado" ColumnName="Id_Empleado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RhUniformesModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_EntradasAlmacen">
+            <EntityTypeMapping TypeName="RhUniformesModel.vw_EntradasAlmacen">
+              <MappingFragment StoreEntitySet="vw_EntradasAlmacen">
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="TipoEntrada" ColumnName="TipoEntrada" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ExistenciasAlmacen">
+            <EntityTypeMapping TypeName="RhUniformesModel.vw_ExistenciasAlmacen">
+              <MappingFragment StoreEntitySet="vw_ExistenciasAlmacen">
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="Existencias" ColumnName="Existencias" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_ListadoArticulos">
+            <EntityTypeMapping TypeName="RhUniformesModel.vw_ListadoArticulos">
+              <MappingFragment StoreEntitySet="vw_ListadoArticulos">
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_SalidasAlmacen">
+            <EntityTypeMapping TypeName="RhUniformesModel.vw_SalidasAlmacen">
+              <MappingFragment StoreEntitySet="vw_SalidasAlmacen">
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="FechaSalida" ColumnName="FechaSalida" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="Nombre_Empleado" ColumnName="Nombre_Empleado" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_EntradaAlmacen" FunctionName="RhUniformesModel.Store.sp_EntradaAlmacen" />
+          <FunctionImportMapping FunctionImportName="sp_SalidaAlmacen" FunctionName="RhUniformesModel.Store.sp_SalidaAlmacen" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

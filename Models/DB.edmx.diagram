@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a383df6c190746799d9a2492e8fa1db9" Name="Diagram1">
+        <EntityTypeShape EntityType="RhUniformesModel.Almacen" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_Articulos" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_Empleados" Width="1.5" PointX="10.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_Estatus" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_Grupos" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_Tallas" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_TipoEmpleados" Width="1.5" PointX="6" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_TiposArticulos" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_TiposEntradas" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.Cat_TiposTallas" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.EntradaAlmacen" Width="1.5" PointX="9.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.SalidaAlmacen" Width="1.5" PointX="12.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.vw_EntradasAlmacen" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.vw_ExistenciasAlmacen" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.vw_ListadoArticulos" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RhUniformesModel.vw_SalidasAlmacen" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="RhUniformesModel.FK_Almacen_Cat_Articulos" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Almacen_Cat_Tallas" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Almacen_Cat_TiposTallas" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_EntradaAlmacen_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_SalidaAlmacen_Almacen" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_Articulos_Cat_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_Articulos_Cat_TiposArticulos" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_Empleados_Cat_Grupos1" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_EntradaAlmacen_Cat_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_SalidaAlmacen_Cat_Empleados1" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_Tallas_Cat_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_TiposArticulos_Cat_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_TiposEntradas_Cat_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_TiposTallas_Cat_Estatus" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_Cat_Grupos_Cat_TipoEmpleados1" ManuallyRouted="false" />
+        <AssociationConnector Association="RhUniformesModel.FK_EntradaAlmacen_Cat_TiposEntradas" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
