@@ -12,3 +12,4 @@ Clonar o Descarar el el repositorio, adecuar la cadena de conexion a la base de 
 | Info | Link |
 | ------ | ------ |
 | Comprimido | [http://pabloscientist.com.mx/resources/ControlDeUniformes.rar]
+| GitHub | [https://github.com/Exercices/QuizUniformes.git]
